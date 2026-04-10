@@ -1,6 +1,6 @@
 # From Chords to Code: Building a Ukulele Companion App
 
-Slides for my talk at [FOSSMeet 2026](https://fossmeet.in/), NIT Calicut.
+Slides for my talk at [FOSSMeet 2026](https://fossmeet.org), NIT Calicut.
 
 ## Abstract
 
