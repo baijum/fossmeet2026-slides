@@ -1,0 +1,169 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{seahorse}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc,decorations.pathmorphing}
+
+\usepackage{fontenc}
+\usepackage{hyperref}
+
+% Metadata
+\title{From Chords to Code}
+\subtitle{Building a Ukulele Companion App}
+\author{Baiju Muthukadan}
+\institute{Senior Software Engineer, Red Hat}
+\date{FOSSMeet 2026 \\ NIT Calicut}
+
+\begin{document}
+
+% ----------------------------------------------------------
+% Title Slide
+% ----------------------------------------------------------
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% ----------------------------------------------------------
+% Outline
+% ----------------------------------------------------------
+\begin{frame}{Outline}
+  \tableofcontents
+\end{frame}
+
+% ==========================================================
+\section{Introduction}
+% ==========================================================
+
+\begin{frame}{About Me}
+  % TODO: Fill in key points about yourself
+  \begin{itemize}
+    \item 20+ years in software industry
+    \item Senior Software Engineer at Red Hat
+    \item Active FOSS contributor
+    \item Exploring AI in software development
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The Spark}
+  % TODO: What motivated the app? Personal ukulele learning story
+\end{frame}
+
+% ==========================================================
+\section{From Idea to App}
+% ==========================================================
+
+\begin{frame}{The Problem}
+  % TODO: What gap did you see? What was missing?
+\end{frame}
+
+\begin{frame}{Early Prototyping}
+  % TODO: First steps, initial experiments
+\end{frame}
+
+\begin{frame}{Defining the Feature Set}
+  % TODO: Core features you decided to build
+\end{frame}
+
+% ==========================================================
+\section{Design \& Architecture}
+% ==========================================================
+
+\begin{frame}{Choosing the Tech Stack}
+  % TODO: Framework, language, tooling decisions
+\end{frame}
+
+\begin{frame}{App Architecture}
+  % TODO: High-level architecture overview
+  % Example TikZ architecture diagram placeholder:
+  \begin{center}
+    \begin{tikzpicture}[
+      box/.style={draw, rounded corners, minimum width=2.5cm, minimum height=1cm, align=center, fill=blue!10},
+      arrow/.style={->, thick}
+    ]
+      \node[box] (ui) {UI Layer};
+      \node[box, right=2cm of ui] (logic) {Business Logic};
+      \node[box, right=2cm of logic] (data) {Data Layer};
+      \draw[arrow] (ui) -- (logic);
+      \draw[arrow] (logic) -- (data);
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}{UI/UX Decisions}
+  % TODO: Design choices, user experience considerations
+\end{frame}
+
+% ==========================================================
+\section{Building \& Shipping}
+% ==========================================================
+
+\begin{frame}{Development Workflow}
+  % TODO: How you built it day-to-day
+\end{frame}
+
+\begin{frame}{App Store Releases}
+  % TODO: Publishing process, challenges, approvals
+\end{frame}
+
+\begin{frame}{User Feedback \& Iteration}
+  % TODO: How you gathered and responded to feedback
+\end{frame}
+
+% ==========================================================
+\section{FOSS \& the App}
+% ==========================================================
+
+\begin{frame}{FOSS Principles in Practice}
+  % TODO: How open source influenced your approach
+\end{frame}
+
+\begin{frame}{Community \& Sharing}
+  % TODO: Open sourcing, community contributions
+\end{frame}
+
+% ==========================================================
+\section{Lessons Learned}
+% ==========================================================
+
+\begin{frame}{What Worked}
+  % TODO: Key wins and good decisions
+\end{frame}
+
+\begin{frame}{What I'd Do Differently}
+  % TODO: Hindsight reflections
+\end{frame}
+
+% ==========================================================
+\section{Demo}
+% ==========================================================
+
+\begin{frame}{Live Demo}
+  % TODO: Demo the app or show screenshots
+  \begin{center}
+    \textit{Live demo of the Ukulele Companion App}
+  \end{center}
+\end{frame}
+
+% ==========================================================
+\section{Conclusion}
+% ==========================================================
+
+\begin{frame}{Key Takeaways}
+  % TODO: Summary points for the audience
+\end{frame}
+
+\begin{frame}{Thank You!}
+  \begin{center}
+    {\Large Questions?}
+
+    \vspace{1cm}
+
+    % TODO: Add your contact/social links
+    % \texttt{email@example.com} \\
+    % \texttt{github.com/username}
+  \end{center}
+\end{frame}
+
+\end{document}
