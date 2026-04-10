@@ -64,8 +64,14 @@ Once the app was out there, the feedback started flowing in. Early Reddit commen
 ## FOSS Principles in Practice
 From the beginning, FOSS principles guided how I built this app. The code is MIT licensed -- fully open source. During development, I followed the classic open source approach: release early, release often. Once the app reached production, I switched to a monthly release cadence, unless there's a critical bug that needs an immediate fix. And I've tried to be transparent about every decision in the development process.
 
+## Product Decisions That Mattered
+Some product decisions defined this project more than any code. No ads, no analytics, no telemetry -- ever. The privacy policy is literally one sentence: "This app does not collect any data." I actually shipped Google Drive sync at one point, and then removed it. Local backup and restore only. Offline-first is a feature, not a limitation. Users trust what they control.
+
+## Accessibility: Not an Afterthought
+This is something I feel strongly about. The app is designed for blind and visually impaired musicians. Every element has TalkBack support on Android and VoiceOver support on iOS. The tuner readings are announced in real time through live regions, so a screen reader user can tune their ukulele just by listening. There's a high-contrast theme and a left-handed mode. In our project, breaking accessibility is treated as seriously as breaking functionality.
+
 ## Community & Sharing
-Let me give you a concrete example. We received our first community bug report -- someone found an issue with the auto-scroll feature. I fixed it within 24 hours, publicly credited the reporter, and explained exactly what the root cause was. That one bug report led to new automated tests and improved accessibility checks. I also maintain an ATTRIBUTION.md file that credits every resource used in the app -- audio samples from Freesound, the pitch detection ML model, every library and their licenses. And all discussions happen openly on GitHub for anyone to follow along.
+Let me give you a concrete example of how community works. We received our first community bug report -- someone found an issue with the auto-scroll feature. I fixed it within 24 hours, publicly credited the reporter, and explained exactly what the root cause was. That one bug report led to new automated tests and improved accessibility checks. I also maintain an ATTRIBUTION.md file that credits every resource used in the app -- audio samples from Freesound, the pitch detection ML model, every library and their licenses. And all discussions happen openly on GitHub for anyone to follow along.
 
 ---
 
@@ -82,10 +88,16 @@ Now, let me show you the app in action. I'll run it on the iOS Simulator so you 
 
 [DEMO]
 
+## The App at a Glance
+So now that you've seen it in action, let me give you the numbers. The app has 17 feature areas, runs on 2 platforms, is localized in 16 languages, works fully offline, and is MIT licensed. No network, no telemetry, no ads. Available on both Google Play and the App Store.
+
 ---
 
 ## Key Takeaways
 So, to wrap up. Scratch your own itch -- the best apps come from solving problems you actually have. AI tools lower the barrier -- you don't need a team to ship a real product anymore. Share early and listen actively -- Reddit validated this idea before I over-invested. FOSS principles build trust -- open source your code, give proper attribution, be transparent. The hardest part isn't writing code -- it's distribution, testing, and reaching users. And finally -- start today. Your side project might surprise you.
+
+## Get Involved
+If any of this resonated with you -- contributions are welcome. Whether it's features, translations, bug fixes, or documentation. The app is available on Google Play and the App Store. There's also a companion book -- "The Complete Ukulele Learning Book" -- available as a free PDF. Everything is at github.com/baijum/ukulele-companion.
 
 ## Thank You
 Thank you so much for listening! The code is fully open source on GitHub. I'd love to hear your questions.

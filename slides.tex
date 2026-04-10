@@ -20,7 +20,14 @@
 % Title Slide
 % ----------------------------------------------------------
 \begin{frame}
-  \titlepage
+  \begin{columns}
+    \column{0.7\textwidth}
+      \titlepage
+    \column{0.3\textwidth}
+      \begin{center}
+        \includegraphics[width=3cm]{app-icon.png}
+      \end{center}
+  \end{columns}
 \end{frame}
 
 % ----------------------------------------------------------
@@ -221,6 +228,25 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}{Product Decisions That Mattered}
+  \begin{itemize}
+    \item No ads, no analytics, no telemetry --- ever
+    \item Privacy policy is one sentence: ``This app does not collect any data''
+    \item Shipped Google Drive sync, then removed it --- local backup only
+    \item Offline-first is a feature, not a limitation
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Accessibility: Not an Afterthought}
+  \begin{itemize}
+    \item Designed for blind and visually impaired musicians
+    \item TalkBack (Android) + VoiceOver (iOS) on every element
+    \item Tuner readings announced in real time via live regions
+    \item High-contrast theme + left-handed mode
+    \item Breaking accessibility is treated as seriously as breaking functionality
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Community \& Sharing}
   \begin{itemize}
     \item First community bug report --- fixed within 24 hours
@@ -261,9 +287,13 @@
 
 \begin{frame}{Live Demo}
   \begin{center}
-    {\Large Ukulele Companion App}
+    \includegraphics[width=2.5cm]{app-icon.png}
 
     \vspace{0.5cm}
+
+    {\Large Ukulele Companion App}
+
+    \vspace{0.3cm}
 
     \textit{Live demo using iOS Simulator}
   \end{center}
@@ -273,6 +303,26 @@
 \section{Conclusion}
 % ==========================================================
 
+\begin{frame}{The App at a Glance}
+  \begin{center}
+    \begin{tikzpicture}[
+      stat/.style={draw, rounded corners=4pt, minimum width=2.8cm, minimum height=1cm,
+        align=center, fill=mDarkTeal!10, draw=mDarkTeal, font=\small\bfseries}
+    ]
+      \node[stat] (a) at (0,0) {17 features};
+      \node[stat] (b) at (3.5,0) {2 platforms};
+      \node[stat] (c) at (7,0) {16 languages};
+      \node[stat] (d) at (1.75,-1.5) {Fully offline};
+      \node[stat] (e) at (5.25,-1.5) {MIT license};
+    \end{tikzpicture}
+  \end{center}
+  \vspace{0.3cm}
+  \begin{itemize}
+    \item No network, no telemetry, no ads
+    \item Available on Google Play and App Store
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Key Takeaways}
   \begin{itemize}
     \item Scratch your own itch --- the best apps solve problems you have yourself
@@ -281,6 +331,15 @@
     \item FOSS principles build trust --- open source, attribution, transparency
     \item The hardest part isn't code --- it's distribution, testing, and reaching users
     \item Start today --- your side project might surprise you!
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Get Involved}
+  \begin{itemize}
+    \item Contributions welcome: features, translations, bug fixes, docs
+    \item Available on Google Play and App Store
+    \item Companion book: \textit{The Complete Ukulele Learning Book} (free PDF)
+    \item \texttt{github.com/baijum/ukulele-companion}
   \end{itemize}
 \end{frame}
 
