@@ -1,13 +1,11 @@
 \documentclass[aspectratio=169]{beamer}
 
-\usetheme{Madrid}
-\usecolortheme{seahorse}
+\usetheme[progressbar=frametitle, numbering=fraction]{metropolis}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows,positioning,calc,decorations.pathmorphing}
 
 \usepackage{fontenc}
-\usepackage{hyperref}
 
 % Metadata
 \title{From Chords to Code}
@@ -37,7 +35,6 @@
 % ==========================================================
 
 \begin{frame}{About Me}
-  % TODO: Fill in key points about yourself
   \begin{itemize}
     \item 20+ years in software industry
     \item Senior Software Engineer at Red Hat
@@ -47,7 +44,14 @@
 \end{frame}
 
 \begin{frame}{The Spark}
-  % TODO: What motivated the app? Personal ukulele learning story
+  \begin{itemize}
+    \item Started learning ukulele --- couldn't find the right app
+    \item Was exploring AI-assisted development (Claude Code, Cursor)
+    \item ``Why not build one myself?''
+    \item Built it for personal use --- not planning to distribute
+    \item Shared on Reddit (\texttt{r/ukulele}) --- real interest from the community
+    \item Community response turned a side project into a real one!
+  \end{itemize}
 \end{frame}
 
 % ==========================================================
@@ -55,44 +59,98 @@
 % ==========================================================
 
 \begin{frame}{The Problem}
-  % TODO: What gap did you see? What was missing?
+  \begin{itemize}
+    \item Plenty of apps show chord diagrams for common chords
+    \item But \textit{how} are those chords found on the fretboard?
+    \item Wanted a \textbf{fretboard explorer} --- not just a chord dictionary
+    \item Press on strings, strum, and see what chord you're playing
+    \item Learn the ``why'' behind chord shapes, not just memorize them
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Early Prototyping}
-  % TODO: First steps, initial experiments
+  \begin{itemize}
+    \item Chatted with AI chatbots (ChatGPT, Gemini) to explore app requirements
+    \item Used conversations to understand music theory and fretboard logic
+    \item AI as a brainstorming partner --- not just a code generator
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{Defining the Feature Set}
-  % TODO: Core features you decided to build
+\begin{frame}{Building with AI Tools}
+  \begin{itemize}
+    \item Started building features with Cursor and Claude Code
+    \item Slowly added functionality --- iterate, test, improve
+    \item AI-assisted development, but human-driven decisions
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{From Prototype to Production}
+  \begin{itemize}
+    \item Had a working app --- now what?
+    \item Needed real users to validate and improve it
+    \item Google Play requires closed testing before publishing
+    \item The next challenge: getting the app out there
+  \end{itemize}
 \end{frame}
 
 % ==========================================================
 \section{Design \& Architecture}
 % ==========================================================
 
+\begin{frame}{The iOS Question}
+  \begin{itemize}
+    \item Users on Reddit and Facebook kept asking: ``What about iOS?''
+    \item Didn't own any Apple device
+    \item Purchased an iPad mini to make it happen
+    \item Decided to go cross-platform
+  \end{itemize}
+\end{frame}
+
 \begin{frame}{Choosing the Tech Stack}
-  % TODO: Framework, language, tooling decisions
+  \begin{itemize}
+    \item Kotlin Multiplatform (KMP) for shared logic
+    \item Android: Jetpack Compose + Material3
+    \item iOS: SwiftUI
+    \item Shared module: domain logic, pitch detection, chord data
+    \item Platform-specific: UI, audio, storage
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{App Architecture}
-  % TODO: High-level architecture overview
-  % Example TikZ architecture diagram placeholder:
   \begin{center}
-    \begin{tikzpicture}[
-      box/.style={draw, rounded corners, minimum width=2.5cm, minimum height=1cm, align=center, fill=blue!10},
-      arrow/.style={->, thick}
+    \begin{tikzpicture}[scale=0.95,
+      shared/.style={draw, rounded corners=4pt, minimum width=7.5cm, minimum height=2cm,
+        align=center, fill=violet!12, draw=violet!60!black, line width=0.8pt},
+      platform/.style={draw, rounded corners=4pt, minimum width=3.5cm, minimum height=2.5cm,
+        align=left, line width=0.8pt},
+      arrow/.style={->, thick, gray!70},
+      label/.style={font=\bfseries\small}
     ]
-      \node[box] (ui) {UI Layer};
-      \node[box, right=2cm of ui] (logic) {Business Logic};
-      \node[box, right=2cm of logic] (data) {Data Layer};
-      \draw[arrow] (ui) -- (logic);
-      \draw[arrow] (logic) -- (data);
+      % Shared module
+      \node[shared] (shared) {\textbf{Shared (KMP Module)} \\ {\small Domain logic, data types, pitch detection, chords}};
+
+      % Android
+      \node[platform, fill=green!8, draw=green!50!black, below=1.5cm of shared, xshift=-2.3cm] (android)
+        {\textbf{Android App} \\ {\scriptsize Compose + Material3} \\ {\scriptsize ViewModel / StateFlow} \\ {\scriptsize SharedPreferences} \\ {\scriptsize SoundPool (OGG)}};
+
+      % iOS
+      \node[platform, fill=orange!8, draw=orange!60!black, below=1.5cm of shared, xshift=2.3cm] (ios)
+        {\textbf{iOS App} \\ {\scriptsize SwiftUI} \\ {\scriptsize ObservableObject} \\ {\scriptsize UserDefaults} \\ {\scriptsize AVFoundation (WAV)}};
+
+      % Arrows
+      \draw[arrow] ([xshift=-1.2cm]shared.south) -- (android.north);
+      \draw[arrow] ([xshift=1.2cm]shared.south) -- (ios.north);
     \end{tikzpicture}
   \end{center}
 \end{frame}
 
 \begin{frame}{UI/UX Decisions}
-  % TODO: Design choices, user experience considerations
+  \begin{itemize}
+    \item Native look and feel on both platforms (Compose + SwiftUI)
+    \item Preferred platform-native widgets and patterns
+    \item No pixel-perfect matching between Android and iOS
+    \item Each platform feels like it belongs there
+  \end{itemize}
 \end{frame}
 
 % ==========================================================
@@ -100,15 +158,54 @@
 % ==========================================================
 
 \begin{frame}{Development Workflow}
-  % TODO: How you built it day-to-day
+  \begin{itemize}
+    \item AI-assisted development with Cursor and Claude Code
+    \item Created custom Skills in Cursor to automate repetitive tasks
+    \item Examples: release builds, Play Store uploads, translations
+    \item Gradually built a library of reusable workflows
+    \item Rules for architecture, accessibility, testing conventions
+    \item Result: consistent, repeatable process --- even as a solo developer
+  \end{itemize}
 \end{frame}
 
-\begin{frame}{App Store Releases}
-  % TODO: Publishing process, challenges, approvals
+\begin{frame}{Reaching Out for Testers}
+  \begin{itemize}
+    \item Posted on Reddit (\texttt{r/ukulele}) --- 3.9K views, 14 comments
+    \item Shared in Facebook ukulele groups
+    \item Put out a request on WhatsApp status
+    \item Messaged ukulele players on Instagram
+    \item Finally got 30+ people to join the Google Group
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{The 14-Day Challenge}
+  \begin{itemize}
+    \item Google Play requires 12+ testers for 14 continuous days
+    \item Sent emails asking testers to open the app daily
+    \item Play Store dashboard told a different story --- most weren't active
+    \item A common struggle for indie developers everywhere
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{App Hive to the Rescue}
+  \begin{itemize}
+    \item Discovered App Hive --- a community-driven closed testing hub
+    \item Developers form ``Hives'' of 14--20 members
+    \item You test their apps, they test yours --- mutual help
+    \item Proof-of-test system: screenshots, real devices only
+    \item After 14 days of continuous testing --- requirement fulfilled!
+    \item Finally published on Google Play Store
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{User Feedback \& Iteration}
-  % TODO: How you gathered and responded to feedback
+  \begin{itemize}
+    \item Early Reddit feedback: ``practical and beneficial'', ``looks useful''
+    \item Feature requests from real users (e.g., baritone tuning)
+    \item ``Works fine on tablet and smartphone!'' --- first real user review
+    \item Opened source code on GitHub to build trust
+    \item Each round of feedback shaped the next release
+  \end{itemize}
 \end{frame}
 
 % ==========================================================
@@ -116,11 +213,23 @@
 % ==========================================================
 
 \begin{frame}{FOSS Principles in Practice}
-  % TODO: How open source influenced your approach
+  \begin{itemize}
+    \item Code is MIT Licensed --- fully open source
+    \item During development: release early, release often
+    \item After production release: monthly release cadence (unless bugs)
+    \item Transparent about development process and decisions
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Community \& Sharing}
-  % TODO: Open sourcing, community contributions
+  \begin{itemize}
+    \item First community bug report --- fixed within 24 hours
+    \item Publicly credited the reporter, explained the root cause
+    \item One bug report led to new tests and accessibility checks
+    \item Proper attribution: ATTRIBUTION.md credits audio samples,
+          ML models, and libraries with their licenses
+    \item Open discussions on GitHub for anyone to follow along
+  \end{itemize}
 \end{frame}
 
 % ==========================================================
@@ -128,11 +237,22 @@
 % ==========================================================
 
 \begin{frame}{What Worked}
-  % TODO: Key wins and good decisions
+  \begin{itemize}
+    \item AI as a force multiplier --- chatbots for requirements, Cursor/Claude Code for building
+    \item Posting on Reddit early to validate the idea
+    \item Going cross-platform with KMP --- shared logic, native UIs
+    \item Custom Cursor Skills for repeatable workflows
+    \item App Hive for solving the closed testing bottleneck
+    \item Being transparent and community-focused from day one
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{What I'd Do Differently}
-  % TODO: Hindsight reflections
+  \begin{itemize}
+    \item Learn more music theory before building a music app
+    \item Start the iOS port earlier --- plan for cross-platform from day one
+    \item Give the Circle of Fifths feature more focus sooner
+  \end{itemize}
 \end{frame}
 
 % ==========================================================
@@ -140,9 +260,12 @@
 % ==========================================================
 
 \begin{frame}{Live Demo}
-  % TODO: Demo the app or show screenshots
   \begin{center}
-    \textit{Live demo of the Ukulele Companion App}
+    {\Large Ukulele Companion App}
+
+    \vspace{0.5cm}
+
+    \textit{Live demo using iOS Simulator}
   \end{center}
 \end{frame}
 
@@ -151,7 +274,14 @@
 % ==========================================================
 
 \begin{frame}{Key Takeaways}
-  % TODO: Summary points for the audience
+  \begin{itemize}
+    \item Scratch your own itch --- the best apps solve problems you have yourself
+    \item AI tools lower the barrier --- you don't need a team to ship a real product
+    \item Share early, listen actively --- Reddit validated the idea before over-investing
+    \item FOSS principles build trust --- open source, attribution, transparency
+    \item The hardest part isn't code --- it's distribution, testing, and reaching users
+    \item Start today --- your side project might surprise you!
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Thank You!}
@@ -160,9 +290,7 @@
 
     \vspace{1cm}
 
-    % TODO: Add your contact/social links
-    % \texttt{email@example.com} \\
-    % \texttt{github.com/username}
+    \texttt{github.com/baijum/ukulele-companion}
   \end{center}
 \end{frame}
 
