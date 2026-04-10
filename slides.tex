@@ -6,6 +6,7 @@
 \usetikzlibrary{shapes,arrows,positioning,calc,decorations.pathmorphing}
 
 \usepackage{fontenc}
+\usepackage{pdfpc}
 
 % Metadata
 \title{From Chords to Code}
@@ -28,6 +29,7 @@
         \includegraphics[width=3cm]{app-icon.png}
       \end{center}
   \end{columns}
+  \pdfpcnote{Story of how learning a musical instrument led to building and shipping a mobile app -- with AI tools and the open source community.}
 \end{frame}
 
 % ----------------------------------------------------------
@@ -35,6 +37,7 @@
 % ----------------------------------------------------------
 \begin{frame}{Outline}
   \tableofcontents
+  \pdfpcnote{Overview: how it began, idea to app, architecture, shipping challenges, FOSS principles, lessons learned, live demo.}
 \end{frame}
 
 % ==========================================================
@@ -48,6 +51,7 @@
     \item Active FOSS contributor
     \item Exploring AI in software development
   \end{itemize}
+  \pdfpcnote{20+ years in industry. Work at Red Hat. Long-time FOSS contributor. Recently exploring AI in software development -- central theme of this talk.}
 \end{frame}
 
 \begin{frame}{The Spark}
@@ -59,6 +63,7 @@
     \item Shared on Reddit (\texttt{r/ukulele}) --- real interest from the community
     \item Community response turned a side project into a real one!
   \end{itemize}
+  \pdfpcnote{Picked up ukulele, looked for apps, none did what I wanted. Was exploring Claude Code and Cursor. Built it for myself. Posted on r/ukulele -- people were genuinely interested. That response changed everything.}
 \end{frame}
 
 % ==========================================================
@@ -73,6 +78,7 @@
     \item Press on strings, strum, and see what chord you're playing
     \item Learn the ``why'' behind chord shapes, not just memorize them
   \end{itemize}
+  \pdfpcnote{Plenty of chord diagram apps exist. But how are chords found on the fretboard? Wanted to press strings and see the chord. Understand the ``why'' not just memorize positions.}
 \end{frame}
 
 \begin{frame}{Early Prototyping}
@@ -81,6 +87,7 @@
     \item Used conversations to understand music theory and fretboard logic
     \item AI as a brainstorming partner --- not just a code generator
   \end{itemize}
+  \pdfpcnote{Before writing code, chatted with ChatGPT and Gemini. Not for code generation -- for requirements. What should a fretboard explorer do? How does music theory work? AI as brainstorming partner.}
 \end{frame}
 
 \begin{frame}{Building with AI Tools}
@@ -89,6 +96,7 @@
     \item Slowly added functionality --- iterate, test, improve
     \item AI-assisted development, but human-driven decisions
   \end{itemize}
+  \pdfpcnote{Used Cursor and Claude Code to build. Very iterative -- build, test, improve. AI helped write code faster, but all decisions about what to build and how were mine.}
 \end{frame}
 
 \begin{frame}{From Prototype to Production}
@@ -98,6 +106,7 @@
     \item Google Play requires closed testing before publishing
     \item The next challenge: getting the app out there
   \end{itemize}
+  \pdfpcnote{Had a working app on my phone. Now what? Need real users. Google Play requires closed testing before publishing -- much bigger challenge than expected.}
 \end{frame}
 
 % ==========================================================
@@ -111,6 +120,7 @@
     \item Purchased an iPad mini to make it happen
     \item Decided to go cross-platform
   \end{itemize}
+  \pdfpcnote{On Reddit and Facebook, people kept asking ``What about iOS?'' Didn't own any Apple device. Bought an iPad mini. Decided to go cross-platform.}
 \end{frame}
 
 \begin{frame}{Choosing the Tech Stack}
@@ -121,6 +131,7 @@
     \item Shared module: domain logic, pitch detection, chord data
     \item Platform-specific: UI, audio, storage
   \end{itemize}
+  \pdfpcnote{KMP for shared logic -- write once. Android: Compose + Material3. iOS: SwiftUI. Core logic shared, UI/audio/storage are platform-specific.}
 \end{frame}
 
 \begin{frame}{App Architecture}
@@ -149,6 +160,7 @@
       \draw[arrow] ([xshift=1.2cm]shared.south) -- (ios.north);
     \end{tikzpicture}
   \end{center}
+  \pdfpcnote{Shared KMP module at top -- all music theory and chord logic. Android: Compose, StateFlow, SoundPool. iOS: SwiftUI, ObservableObject, AVFoundation. Same logic, native experience.}
 \end{frame}
 
 \begin{frame}{UI/UX Decisions}
@@ -158,6 +170,7 @@
     \item No pixel-perfect matching between Android and iOS
     \item Each platform feels like it belongs there
   \end{itemize}
+  \pdfpcnote{Native look and feel on both platforms. Preferred platform-native widgets over pixel-perfect matching. Android feels like Android, iOS feels like iOS.}
 \end{frame}
 
 % ==========================================================
@@ -173,6 +186,7 @@
     \item Rules for architecture, accessibility, testing conventions
     \item Result: consistent, repeatable process --- even as a solo developer
   \end{itemize}
+  \pdfpcnote{Solo dev needs consistency. Custom Cursor Skills for releases, uploads, translations. Rules for architecture and accessibility. Repeatable process -- move fast without breaking things.}
 \end{frame}
 
 \begin{frame}{Reaching Out for Testers}
@@ -183,6 +197,7 @@
     \item Messaged ukulele players on Instagram
     \item Finally got 30+ people to join the Google Group
   \end{itemize}
+  \pdfpcnote{Google Play needs closed testers. Reddit post: 3.9K views, 14 comments. Facebook groups, WhatsApp status, Instagram DMs. Got 30+ people in the Google Group.}
 \end{frame}
 
 \begin{frame}{The 14-Day Challenge}
@@ -192,6 +207,7 @@
     \item Play Store dashboard told a different story --- most weren't active
     \item A common struggle for indie developers everywhere
   \end{itemize}
+  \pdfpcnote{Getting people to join was half the battle. Google needs 12+ testers active for 14 continuous days. Sent emails daily. Dashboard showed most weren't active. Common indie dev struggle.}
 \end{frame}
 
 \begin{frame}{App Hive to the Rescue}
@@ -203,6 +219,7 @@
     \item After 14 days of continuous testing --- requirement fulfilled!
     \item Finally published on Google Play Store
   \end{itemize}
+  \pdfpcnote{App Hive: community-driven testing platform. Hives of 14-20 devs. You test theirs, they test yours. Screenshots required, real devices only. After 14 days -- requirement fulfilled! Published on Play Store.}
 \end{frame}
 
 \begin{frame}{User Feedback \& Iteration}
@@ -213,6 +230,7 @@
     \item Opened source code on GitHub to build trust
     \item Each round of feedback shaped the next release
   \end{itemize}
+  \pdfpcnote{Encouraging Reddit feedback. Feature requests like baritone tuning. First review: ``Works fine on tablet and smartphone!'' Opened source on GitHub for trust. Feedback shaped each release.}
 \end{frame}
 
 % ==========================================================
@@ -226,6 +244,7 @@
     \item After production release: monthly release cadence (unless bugs)
     \item Transparent about development process and decisions
   \end{itemize}
+  \pdfpcnote{FOSS from the start. MIT licensed. During dev: release early, release often. After production: monthly cadence unless critical bugs. Transparent about every decision.}
 \end{frame}
 
 \begin{frame}{Product Decisions That Mattered}
@@ -235,6 +254,7 @@
     \item Shipped Google Drive sync, then removed it --- local backup only
     \item Offline-first is a feature, not a limitation
   \end{itemize}
+  \pdfpcnote{No ads, no analytics, no telemetry -- ever. Privacy policy is one sentence. Shipped Google Drive sync then removed it. Local only. Offline-first is a feature. Users trust what they control.}
 \end{frame}
 
 \begin{frame}{Accessibility: Not an Afterthought}
@@ -245,6 +265,7 @@
     \item High-contrast theme + left-handed mode
     \item Breaking accessibility is treated as seriously as breaking functionality
   \end{itemize}
+  \pdfpcnote{Designed for blind/visually impaired musicians. TalkBack and VoiceOver on every element. Tuner uses live regions -- screen reader announces notes in real time. High contrast + left-handed mode.}
 \end{frame}
 
 \begin{frame}{Community \& Sharing}
@@ -256,6 +277,7 @@
           ML models, and libraries with their licenses
     \item Open discussions on GitHub for anyone to follow along
   \end{itemize}
+  \pdfpcnote{First community bug report -- auto-scroll issue. Fixed in 24 hours. Credited reporter, explained root cause publicly. Led to new tests and accessibility checks. ATTRIBUTION.md credits all resources. Open GitHub discussions.}
 \end{frame}
 
 % ==========================================================
@@ -271,6 +293,7 @@
     \item App Hive for solving the closed testing bottleneck
     \item Being transparent and community-focused from day one
   \end{itemize}
+  \pdfpcnote{AI as force multiplier. Reddit for early validation. KMP for cross-platform. Cursor Skills for workflows. App Hive for testing. Transparency and community from day one.}
 \end{frame}
 
 \begin{frame}{What I'd Do Differently}
@@ -279,6 +302,7 @@
     \item Start the iOS port earlier --- plan for cross-platform from day one
     \item Give the Circle of Fifths feature more focus sooner
   \end{itemize}
+  \pdfpcnote{Learn more music theory first -- domain knowledge matters. Plan cross-platform from day one instead of retrofitting. Circle of Fifths is key music theory concept -- should have prioritized earlier.}
 \end{frame}
 
 % ==========================================================
@@ -297,6 +321,7 @@
 
     \textit{Live demo using iOS Simulator}
   \end{center}
+  \pdfpcnote{Show fretboard explorer, chord detection, tuner, and songbook. Keep demo under 5 minutes.}
 \end{frame}
 
 % ==========================================================
@@ -321,6 +346,7 @@
     \item No network, no telemetry, no ads
     \item Available on Google Play and App Store
   \end{itemize}
+  \pdfpcnote{Now the numbers: 17 features, 2 platforms, 16 languages, fully offline, MIT licensed. No network, no telemetry, no ads. On both stores.}
 \end{frame}
 
 \begin{frame}{Key Takeaways}
@@ -332,6 +358,7 @@
     \item The hardest part isn't code --- it's distribution, testing, and reaching users
     \item Start today --- your side project might surprise you!
   \end{itemize}
+  \pdfpcnote{Scratch your own itch. AI lowers the barrier. Share early, listen. FOSS builds trust. Hardest part isn't code -- it's distribution. Start today!}
 \end{frame}
 
 \begin{frame}{Get Involved}
@@ -341,6 +368,7 @@
     \item Companion book: \textit{The Complete Ukulele Learning Book} (free PDF)
     \item \texttt{github.com/baijum/ukulele-companion}
   \end{itemize}
+  \pdfpcnote{Contributions welcome: features, translations, bug fixes, docs. On both stores. Free companion book on archive.org. Everything on GitHub.}
 \end{frame}
 
 \begin{frame}{Thank You!}
@@ -351,6 +379,7 @@
 
     \texttt{github.com/baijum/ukulele-companion}
   \end{center}
+  \pdfpcnote{Thank you! Open for questions. 10 minutes for Q\&A.}
 \end{frame}
 
 \end{document}
